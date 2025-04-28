@@ -1,2 +1,2 @@
-from logger.formatter import Formatter
-__all__ = ["Formatter"]
+from logger.logger import Logger
+__all__ = ["logger"]

@@ -14,7 +14,7 @@ class Formatter(BaseFormatter):
     Se Añade un stream handler para el logger.
 
     """
-
+    SUCCESS = 25
     FORMATS = {
         DEBUG: f"{ANSII.DARK_GREY}%(asctime)s{ANSII.RESET} - %(message)s (%(filename)s:%(lineno)d)",
         INFO: f"{ANSII.GREEN}%(asctime)s{ANSII.RESET} - %(message)s (%(filename)s:%(lineno)d)",

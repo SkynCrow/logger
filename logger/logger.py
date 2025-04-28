@@ -13,6 +13,7 @@ class Logger(BaseLogger):
     - Se Añade un file handler para el logger, este almacenara los logs en un archivo en la carpeta .logs.
     - Se Añade un stream handler para el logger.
     """
+    SUCCESS = 25
 
     def __init__(self, name: str, level: int = logging.INFO) -> None:
         if name == "":
@@ -30,7 +31,18 @@ class Logger(BaseLogger):
         self.addHandler(self.string_stream)
         self.propagate = False
         self._pause = False
+        
+    def success(self, msg, *args, **kwargs):
+        """
+        Log 'msg % args' with severity 'INFO'.
 
+        To pass exception information, use the keyword argument exc_info with
+        a true value, e.g.
+
+        logger.info("Houston, we have a %s", "interesting problem", exc_info=1)
+        """
+        if self.isEnabledFor(Logger.SUCCESS):
+            self._log(Logger.SUCCESS, msg, args, **kwargs)
 if __name__ == "__main__":
     logger = Logger("test")
     logger.info("This is a test")
